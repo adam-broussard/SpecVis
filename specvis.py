@@ -130,7 +130,7 @@ def plot_spectra_interactive(plotfilters = [72, 73, 74, 75, 76, 160, 161, 162], 
         photometry.set_offsets(list(zip(newphoto_x, np.log10(newphoto_y))))
 
         avgy = np.average(np.log10(newphoto_y))
-        clone.set_ylim(avgy-10, avgy+10)
+        clone.set_ylim(avgy-5, avgy+5)
 
         fig.canvas.draw_idle()
 
@@ -144,7 +144,8 @@ def plot_spectra_interactive(plotfilters = [72, 73, 74, 75, 76, 160, 161, 162], 
     sp.set_xlim(10**3, 10**5)
     sp.set_ylim(0, 5)
     clone.set_ylabel('log(Flux)')
-    clone.set_ylim(30, 50)
+    avgy = np.average(np.log10(photo_y))
+    clone.set_ylim(avgy-5, avgy+5)
 
     return zslider, Avslider, tauslider
 
